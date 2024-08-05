@@ -19,18 +19,28 @@ const FullPage = () => {
         }
         return;
     }
-    async function getTestimonialById(id, token) {
-        await fetchTestimonialsById(id, token);
+    async function getTestimonialById(id) {
+        await fetchTestimonialsById(id);
     }
     useEffect(() => {
         checkUser()
-        getTestimonialById(id, token)
+        getTestimonialById(id)
     }, [])
     const handleShowOptions = () => {
         setShowOptions(prevShowOptions => !prevShowOptions);
     };
     return (
         <main className='px-4 py-2 md:py-0 md:ml-64 md:mr-64 mt-2 md:mt-0'>
+            <div>
+                <div>
+                    <h2>Grid Theme</h2>
+                    <p>Preview: <Link to={`/embed/grid/${userTestimonial._id}`} target='_blank'>Grid Layout</Link></p>
+                </div>
+                <div>
+                    <h2>Marquee Theme</h2>
+                    <p>Preview: <Link to={`/embed/marquee/${userTestimonial._id}`} target='_blank'>Marquee Layout</Link></p>
+                </div>
+            </div>
             <div className='grid gap-3'>
                 {
                     userTestimonial.images && userTestimonial.images.url ? (
@@ -75,7 +85,7 @@ const FullPage = () => {
                 <div className='flex flex-col text-left justify-between px-1 md:px-3 py-2 gap-1'>
                     <div className='grid gap-1'>
                         <h2 className='px-4 pt-2.5 text-slate-400 font-semibold uppercase'>Embed</h2>
-                        <Link to="#" className=' w-full hover:bg-zinc-700 px-4 py-2.5 rounded-md'>Website</Link>
+                        <button to="#" className='text-left w-full hover:bg-zinc-700 px-4 py-2.5 rounded-md'>Website</button>
                     </div>
                     <div className='grid gap-1'>
                         <h2 className='px-4 pt-2.5 text-slate-400 font-semibold uppercase'>Links</h2>

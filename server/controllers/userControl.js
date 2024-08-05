@@ -153,6 +153,20 @@ const userControl = {
         } catch (error) {
             return res.status(500).json({ msg: error.message });
         }
+    },
+    getInfo: async (req, res) =>{
+        try {
+            const userId = req.user.id;
+            const user = await Users.findById(userId).select('-password');
+          
+          // Handle case where the user is not found
+          if (!user) {
+            return res.status(404).json({ msg: "User not found" });
+          }
+          res.json(user)
+        } catch (error) {
+            return res.status(500).json({ msg: error.message });
+        }
     }
 }
 const createAccessToken = (payload) => {

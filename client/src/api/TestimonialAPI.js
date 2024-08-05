@@ -24,9 +24,7 @@ const TestimonialAPI = () => {
     }
     const fetchTestimonialsById = async (id, token) => {
         try {
-            const res = await axios.get(`${BASE_API_URL}/api/testimonials/${id}`, {
-                headers: { Authorization: token }
-            });
+            const res = await axios.get(`${BASE_API_URL}/api/testimonials/${id}`);
             setUserTestimonial(res.data)
         } catch (error) {
             setError(error);

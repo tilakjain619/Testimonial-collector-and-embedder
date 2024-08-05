@@ -45,7 +45,7 @@ const Navbar = () => {
                         <div className='grid gap-1'>
                         <Link to="/dashboard" className=' w-full hover:bg-zinc-700 px-4 py-2.5 rounded-md'>Dashboard</Link>
                         <Link to="/testimonials" className=' w-full hover:bg-zinc-700 px-4 py-2.5 rounded-md'>Testimonials</Link>
-                        <Link className=' w-full hover:bg-zinc-700 px-4 py-2.5 rounded-md'>Profile</Link>
+                        <Link to="/profile" className=' w-full hover:bg-zinc-700 px-4 py-2.5 rounded-md'>Profile</Link>
                         </div>
                         <div className='absolute left-0 px-3 bottom-4 w-full'>
                         <button className='w-full text-left hover:bg-zinc-700 px-4 py-2.5 rounded-md' onClick={handleLogout}>Logout</button>
