@@ -1,0 +1,11 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  VITE_BASE_API_URL = "https://testiflowbackend.vercel.app"
+
+[[redirects]]
+from = "/*"
+to = "/index.html"
+status = 200
