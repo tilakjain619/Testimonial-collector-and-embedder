@@ -12,7 +12,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
 
-const allowedOrigins = ['http://localhost:5173']
+const allowedOrigins = ['http://localhost:5173', 'https://testiflow.netlify.app', 'https://netlify.com', 'https://cloudinary.com', 'https://console.cloudinary.com', 'https://cloudinary.app']
 app.use(cors({
     origin: (origin, callback) => {
       // Allow requests with no origin (like mobile apps or curl requests)

@@ -41,7 +41,7 @@ const Testimonials = () => {
                 </Link>
               ))
             }
-            <Link to="/create" className='bg-zinc-800 group cursor-pointer min-h-40 max-[640px]:w-full sm:min-w-64 rounded-md px-4 py-3'>
+            <Link to="/create" className='bg-zinc-800 group cursor-pointer min-h-52 max-[640px]:w-full sm:min-w-64 max-w-80 rounded-md px-4 py-3'>
               <p>Create new page</p>
               <div className='mt-[25%] text-gray-500 group-hover:scale-125 transition-all duration-150 group-hover:text-white text-center'>
                 <p className='text-5xl'>+</p>

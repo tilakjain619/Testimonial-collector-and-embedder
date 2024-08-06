@@ -43,7 +43,6 @@ const TestimonialAPI = () => {
     const submitTestimonial = async (testimonialText, id) =>{
         try {
             await axios.post(`${BASE_API_URL}/api/add-testimonial/${id}`, testimonialText);
-            toast.success("Thanks for sending testimonial!");
         } catch (error) {
             toast.error(error.response?.data?.msg || "Error sending testimonial!");
         }

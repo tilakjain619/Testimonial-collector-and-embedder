@@ -17,6 +17,7 @@ import Profile from './pages/Profile';
 import GridLayout from './pages/Themes/GridLayout';
 import Layout from './components/Layout';
 import MarqueeLayout from './pages/Themes/MarqueeLayout';
+import Error from './components/Error';
 
 const App = () => {
   return (
@@ -30,7 +31,6 @@ const App = () => {
           closeOnClick
           rtl={false}
           draggable
-          pauseOnHover
           theme="dark"
           transition="Bounce"
         />
@@ -48,6 +48,8 @@ const App = () => {
             {/* theme layouts for embeds */}
             <Route path='/embed/grid/:id' element={<GridLayout />} />
             <Route path='/embed/marquee/:id' element={<MarqueeLayout />} />
+            
+            <Route path='*' element={<Error />} />
           </Routes>
         </Layout>
       </BrowserRouter>

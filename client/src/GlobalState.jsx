@@ -44,7 +44,9 @@ export const DataProvider = ({ children }) => {
     };
   
     if (loading) {
-      return <div>Loading...</div>; // You can replace this with a spinner or any loading indicator
+      return <div className="grid min-h-screen items-center justify-center">
+        <div className="border-4 border-gray-600 border-t-purple-400 animate-spin rounded-full w-10 h-10"></div>
+      </div>; // You can replace this with a spinner or any loading indicator
     }
   
     return (
