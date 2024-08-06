@@ -71,7 +71,7 @@ const FullPage = () => {
                         <p>Copy this code and paste it in your website's HTML part where you want it:</p>
                         <pre className='overflow-auto bg-gray-900 px-3 py-2 rounded-md whitespace-pre-wrap w-full'>
                             <code className='font-mono'>
-                                &lt;iframe id="testimonialIframe" src="http://localhost:5173/embed/{embedType}/{userTestimonial._id}"&gt;&lt;/iframe&gt;
+                                &lt;iframe id="testimonialIframe" src="https://testiflow.netlify.app/embed/{embedType}/{userTestimonial._id}"&gt;&lt;/iframe&gt;
                                 &lt;script src="https://res.cloudinary.com/da3wjnlzg/raw/upload/v1/testimonialJS/ihlzrspaxe2tvbm6qbza.js"&gt;&lt;/script&gt;
                             </code>
                         </pre>

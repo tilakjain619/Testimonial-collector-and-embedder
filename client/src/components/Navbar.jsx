@@ -23,7 +23,7 @@ const Navbar = () => {
     return (
         <nav className='flex items-center justify-between px-4 py-2 md:px-10 md:py-4'>
             <div className='w-24'>
-                <Link to="/"><img className='w-full' src={logo} alt="Logo" /></Link>
+                <Link to={isLogged ? '/dashboard' : '/'}><img className='w-full' src={logo} alt="Logo" /></Link>
             </div>
             <div className='md:hidden cursor-pointer' onClick={handleShowMenu}>
                 {
