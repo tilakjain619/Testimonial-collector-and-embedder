@@ -20,19 +20,20 @@ const SignUp = () => {
 
     const handleSignup = async (e) => {
         e.preventDefault();
-        try {
-            await axios.post(`${BASE_API_URL}/user/register`, { ...user })
-            localStorage.setItem('testimonial_user_register', true)
-            console.log("Register done");
-            setUser({
-                name: "",
-                email: "",
-                password: ""
-            })
-            toast.success("Signup successful. Please Login");
-        } catch (error) {
-            toast.warning(error.response.data.msg)
-        }
+        toast.info("We are not accepting any signups for now. Stay tuned while we're back")
+        // try {
+        //     await axios.post(`${BASE_API_URL}/user/register`, { ...user })
+        //     localStorage.setItem('testimonial_user_register', true)
+        //     console.log("Register done");
+        //     setUser({
+        //         name: "",
+        //         email: "",
+        //         password: ""
+        //     })
+        //     toast.success("Signup successful. Please Login");
+        // } catch (error) {
+        //     toast.warning(error.response.data.msg)
+        // }
     }
     return (
         <main className='px-4 py-2 md:my-10 grid items-center md:max-w-[40%] lg:max-w-[30%] mx-auto'>
@@ -52,7 +53,7 @@ const SignUp = () => {
 
                 <p className='text-xs text-gray-300 mt-4'>By registering, you agree to our <Link className='underline'>Terms of service</Link> and <Link className='underline'>Privacy policy</Link>. Happy Testiflowing.</p>
 
-                <button className='bg-[#5d5dff] mt-4 mb-4 py-2 rounded-md' type='submit'>Sign up</button>
+                <button className='bg-[#5d5dff] disabled:bg-opacity-20 mt-4 mb-4 py-2 rounded-md' type='submit' disabled>Sign up</button>
             </form>
             <p className='text-sm text-center mt-4 text-gray-300'>
                 Already have an account? <Link className='text-[#7f7fff]' to="/login">Sign in</Link>
