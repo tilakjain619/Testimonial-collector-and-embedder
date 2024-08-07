@@ -59,8 +59,40 @@ const TestimonialAPI = () => {
           console.error("Error creating testimonial page:", error);
         }
       };
+      
+      const updateTestimonialPage = async (id, updatedTestimonialPage, token) => {
+        try {
+          const res = await axios.put(`${BASE_API_URL}/api/edit-testimonials-page/${id}`, updatedTestimonialPage, {
+            headers: { Authorization: token },
+          });
+          console.log(res.data);
+          
+          setUserTestimonialPages((prevPages) => 
+            prevPages.map((page) => (page._id === id ? res.data : page))
+          );
+      
+          toast.success("Testimonial Page updated successfully!");
+        } catch (error) {
+          toast.error(error.response?.data?.msg || "Error updating testimonial page");
+          console.error("Error updating testimonial page:", error);
+        }
+      };
+      const deleteTestimonialPage = async (id, token) => {
+        try {
+            const res = await axios.delete(`${BASE_API_URL}/api/delete-testimonials-page/${id}`, {
+                headers: { Authorization: token }
+            });
+            // Update the state to remove the deleted testimonial page from the list
+            setUserTestimonialPages((prevPages) => prevPages.filter(page => page._id !== id));
+            toast.success(res.data.msg || "Testimonial Page deleted successfully!");
+        } catch (error) {
+            toast.error(error.response?.data?.msg || "Error deleting testimonial page");
+            console.error("Error deleting testimonial page:", error);
+        }
+    };
+      
     
-    return { fetchUserTestimonials, createTestimonialPage, submitTestimonial, fetchTestimonialDescriptionById, testimonialDescription, fetchTestimonialsById, userTestimonial, setUserTestimonial ,userTestimonialPages, setUserTestimonialPages }
+    return { fetchUserTestimonials, deleteTestimonialPage, updateTestimonialPage, createTestimonialPage, submitTestimonial, fetchTestimonialDescriptionById, testimonialDescription, fetchTestimonialsById, userTestimonial, setUserTestimonial ,userTestimonialPages, setUserTestimonialPages }
 }
 
 export default TestimonialAPI

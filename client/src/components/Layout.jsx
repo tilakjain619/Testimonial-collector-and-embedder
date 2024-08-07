@@ -11,7 +11,7 @@ const Layout = ({ children }) => {
   return (
     <>
       {!isEmbedRoute && <Navbar />}
-      <div className='min-h-[84vh]'>
+      <div className='min-h-[84vh] mt-[4rem] sm:mt16 md:mt-24'>
         {children}
       </div>
       {!isEmbedRoute && <Footer />}

@@ -18,6 +18,7 @@ import GridLayout from './pages/Themes/GridLayout';
 import Layout from './components/Layout';
 import MarqueeLayout from './pages/Themes/MarqueeLayout';
 import Error from './components/Error';
+import EditTestimonial from './pages/EditTestimonial';
 
 const App = () => {
   return (
@@ -30,9 +31,9 @@ const App = () => {
           newestOnTop={false}
           closeOnClick
           rtl={false}
+          pauseOnFocusLoss={false}
           draggable
-          theme="dark"
-          transition="Bounce"
+          theme='dark'
         />
         <Layout>
           <Routes>
@@ -43,6 +44,7 @@ const App = () => {
             <Route path='/testimonials' element={<Testimonials />} />
             <Route path='/testimonials/:id' element={<FullPage />} />
             <Route path='/page/:id' element={<UserTestimonial />} />
+            <Route path='/edit/:id' element={<EditTestimonial />} />
             <Route path='/create' element={<CreateTestimonialPage />} />
             <Route path='/profile' element={<Profile />} />
             {/* theme layouts for embeds */}

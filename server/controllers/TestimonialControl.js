@@ -81,10 +81,9 @@ const TestimonialControl = {
             if (description) pageToUpdate.description = description;
 
             // Handle image upload if new images are provided
-            if (images && images.length > 0) {
+            if (images && images.public_id && images.url) {
                 pageToUpdate.images = images; // Update with new image URLs
             }
-
             // Save the updated page
             await pageToUpdate.save();
 
@@ -129,21 +128,21 @@ const TestimonialControl = {
         }
     },
     // Function to get all testimonials for a specific page
-  getTestimonialsForPage: async (req, res) => {
-    try {
-      const { id } = req.params; // Get the testimonial page ID from the URL
+    getTestimonialsForPage: async (req, res) => {
+        try {
+            const { id } = req.params; // Get the testimonial page ID from the URL
 
-      // Find the testimonial page by ID
-      const page = await Testimonial.findById(id);// Only select the testimonials field
-      if (!page) {
-        return res.status(404).json({ msg: "Testimonial page not found" });
-      }
+            // Find the testimonial page by ID
+            const page = await Testimonial.findById(id);// Only select the testimonials field
+            if (!page) {
+                return res.status(404).json({ msg: "Testimonial page not found" });
+            }
 
-      res.json(page); // Return the list of testimonials
-    } catch (error) {
-      res.status(500).json({ msg: error.message });
+            res.json(page); // Return the list of testimonials
+        } catch (error) {
+            res.status(500).json({ msg: error.message });
+        }
     }
-  }
 }
 
 module.exports = TestimonialControl;

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
-    <footer className='px-4 w-full md:w-[80%] lg:w-[50%] mx-auto py-2 mt-10 pb-4'>
+    <footer className='px-4 w-full md:w-[80%] lg:w-[60%] mx-auto py-2 mt-10 pb-4'>
         <div className='grid gap-2'>
             <img className='w-24' src={logo} alt="our logo" />
             <p className='text-gray-300 text-sm'>The easiest way to collect testimonials from your clients and customers and embed them to your websites and blogs.</p>

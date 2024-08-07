@@ -35,20 +35,20 @@ const SignUp = () => {
         }
     }
     return (
-        <main className='px-4 py-2 md:my-10 grid items-center md:max-w-[40%] mx-auto'>
+        <main className='px-4 py-2 md:my-10 grid items-center md:max-w-[40%] lg:max-w-[30%] mx-auto'>
             <div className='text-center my-4'>
                 <h2 className='text-2xl md:text-3xl font-semibold'>Sign up for free 😘</h2>
                 <p className='text-gray-300 text-sm mt-3'>Get unlimited credits for free<br />(Limited Time Offer)</p>
             </div>
             <form className='grid bg-zinc-800 rounded-md px-4 md:px-6 py-4' onSubmit={handleSignup}>
                 <label className='mt-3 text-gray-300 text-sm' htmlFor="name">Name</label>
-                <input value={user.name} onChange={handleChange} required className='block px-3 py-2 mt-1 rounded-md bg-transparent focus:bg-gray-700 border-2 border-zinc-700 outline-none' type="text" name='name' id='name' placeholder='Your full name' />
+                <input value={user.name} onChange={handleChange} required className='block w-full px-3 py-2 mt-1 rounded-md bg-transparent focus:bg-gray-700 border-2 border-zinc-700 outline-none' type="text" name='name' id='name' placeholder='Your full name' />
 
                 <label className='mt-3 text-gray-300 text-sm' htmlFor="email">Email</label>
-                <input value={user.email} onChange={handleChange} required className='block px-3 py-2 mt-1 rounded-md bg-transparent focus:bg-gray-700 border-2 border-zinc-700 outline-none' type="email" name='email' id='email' placeholder='you@email.com' />
+                <input value={user.email} onChange={handleChange} required className='block w-full px-3 py-2 mt-1 rounded-md bg-transparent focus:bg-gray-700 border-2 border-zinc-700 outline-none' type="email" name='email' id='email' placeholder='you@email.com' />
 
                 <label className='mt-3 text-gray-300 text-sm' htmlFor="password">Password</label>
-                <input value={user.password} onChange={handleChange} required className='block px-3 py-2 mt-1 rounded-md bg-transparent focus:bg-gray-700 border-2 border-zinc-700 outline-none' type="password" name='password' id='password' placeholder='Password' />
+                <input value={user.password} onChange={handleChange} required className='block w-full px-3 py-2 mt-1 rounded-md bg-transparent focus:bg-gray-700 border-2 border-zinc-700 outline-none' type="password" name='password' id='password' placeholder='Password' />
 
                 <p className='text-xs text-gray-300 mt-4'>By registering, you agree to our <Link className='underline'>Terms of service</Link> and <Link className='underline'>Privacy policy</Link>. Happy Testiflowing.</p>
 

@@ -33,7 +33,7 @@ const Testimonials = () => {
           <div className='flex mt-4 gap-2 flex-wrap'>
             {
               userTestimonialPages.map((pages) => (
-                <Link to={`/testimonials/${pages._id}`} key={pages._id} className='bg-zinc-800 cursor-pointer hover:bg-zinc-700 min-h-52 max-[640px]:w-full sm:min-w-64 max-w-80 rounded-md px-4 py-3'>
+                <Link to={`/testimonials/${pages._id}`} key={pages._id} className='bg-zinc-800 cursor-pointer hover:bg-zinc-700 min-h-52 max-[640px]:w-full sm:min-w-64 sm:max-w-80 rounded-md px-4 py-3'>
                   <p className='text-pretty'>{pages.description}</p>
                   <div className='mt-2'>
                     <p className='text-sm text-gray-400'>Testimonial received: {pages.testimonials.length}</p>
@@ -41,7 +41,7 @@ const Testimonials = () => {
                 </Link>
               ))
             }
-            <Link to="/create" className='bg-zinc-800 group cursor-pointer min-h-52 max-[640px]:w-full sm:min-w-64 max-w-80 rounded-md px-4 py-3'>
+            <Link to="/create" className='bg-zinc-800 group cursor-pointer min-h-52 max-[640px]:w-full sm:min-w-64 sm:max-w-80 rounded-md px-4 py-3'>
               <p>Create new page</p>
               <div className='mt-[25%] text-gray-500 group-hover:scale-125 transition-all duration-150 group-hover:text-white text-center'>
                 <p className='text-5xl'>+</p>

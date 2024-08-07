@@ -3,6 +3,8 @@ import { GlobalState } from '../GlobalState'
 import { useParams } from 'react-router-dom';
 // import useWindowSize from 'react-use/lib/useWindowSize'
 import Confetti from 'react-confetti'
+ 
+import Particles from "@/components/magicui/particles";
 
 const UserTestimonial = () => {
     const state = useContext(GlobalState);
@@ -15,7 +17,7 @@ const UserTestimonial = () => {
     const [hover, setHover] = useState(null);
     const [showConfetti, setShowConfetti] = useState(null);
     const { width, height } = [100, 100]
-
+    const [color, setColor] = useState("#ffffff");
     async function getTestimonialDescriptionById(id) {
         await fetchTestimonialDescriptionById(id);
     }
@@ -55,10 +57,18 @@ const UserTestimonial = () => {
 
         setTimeout(()=>{
             setShowConfetti(false)
-        }, 10000);
+        }, 7000);
     }
     return (
         <main className={`px-4 py-2 md:py-0 ${isLogged ? 'md:ml-64' : 'md:ml-0'} mt-2 md:mt-0`}>
+                  <Particles
+        className="absolute inset-0 -z-10"
+        quantity={100}
+        ease={80}
+        color={color}
+        refresh
+      />
+
             {showConfetti && <Confetti
                 width={width}
                 height={height}
