@@ -32,7 +32,7 @@ const userControl = {
             res.cookie('refreshToken', refreshToken, {
                 httpOnly: true,
                 path: '/user/refresh-token',
-                // sameSite: 'None', // Ensure the cookie is sent only to your domain
+                sameSite: 'None', // Ensure the cookie is sent only to your domain
                 secure: process.env.NODE_ENV === 'production' // Ensure cookie is sent only over HTTPS in production
             });
 
@@ -58,7 +58,7 @@ const userControl = {
             res.cookie('refreshToken', refreshToken, {
                 httpOnly: true,
                 path: '/user/refresh-token',
-                // sameSite: 'None', // Ensure the cookie is sent only to your domain
+                sameSite: 'None', // Ensure the cookie is sent only to your domain
                 secure: process.env.NODE_ENV === 'production' // Ensure cookie is sent only over HTTPS in production
             });
 
