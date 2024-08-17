@@ -1,29 +1,50 @@
 const Testimonial = require('../models/TestimonialModel');
-const cloudinary = require('cloudinary').v2;
+const User = require('../models/userModel')
 
 const TestimonialControl = {
-    createTestimonialPage: async (req, res) => {
+    createTestimonialPage : async (req, res) => {
         try {
-            const { id } = req.user;
+            const { id } = req.user; // User ID from the authenticated request
             const { description, images } = req.body;
-            if (!images) return res.status(400).json({ msg: "No images uploaded" });
+    
+            if (!images) {
+                return res.status(400).json({ msg: "No images uploaded" });
+            }
+    
             if (!description) {
                 return res.status(400).json({ msg: "Description is required" });
             }
-
+    
+            // Find the user to check if they are a pro user
+            const user = await User.findById(id);
+    
+            if (!user) {
+                return res.status(404).json({ msg: "User not found" });
+            }
+    
+            // Count the number of testimonial pages created by this user
+            const pageCount = await Testimonial.countDocuments({ createdBy: id });
+    
+            // If the user is not a pro user and they have already created 3 pages, restrict them
+            if (!user.isProUser && pageCount >= 3) {
+                return res.status(403).json({ msg: "Upgrade to pro to create more than 3 pages." });
+            }
+    
             // Create a new testimonial page
             const newPage = new Testimonial({
-                description, createdBy: id, images
+                description,
+                createdBy: id,
+                images
             });
-
+    
             // Save the page to the database
             await newPage.save();
-
+    
             res.status(201).json({ msg: "Testimonial page created successfully", newPage });
         } catch (error) {
             res.status(500).json({ msg: error.message });
         }
-    },
+    },    
     // Function to get all testimonial pages created by the current user
     getTestimonialPages: async (req, res) => {
         try {

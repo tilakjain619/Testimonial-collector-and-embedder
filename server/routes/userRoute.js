@@ -10,5 +10,7 @@ router.put("/update-account", auth, userController.updateProfile)
 router.get("/refresh-token", userController.refreshToken)
 router.get("/user-profile", auth, userController.getProfile)
 router.get("/user-info", auth, userController.getInfo)
+router.post("/create-checkout-session", auth, userController.createCheckOutSession)
+router.get("/success", userController.handleSuccess)
 
 module.exports = router;

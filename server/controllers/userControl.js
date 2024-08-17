@@ -1,6 +1,7 @@
 const Users = require('../models/userModel');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY)
 
 const userControl = {
     register: async (req, res) => {
@@ -31,7 +32,7 @@ const userControl = {
             res.cookie('refreshToken', refreshToken, {
                 httpOnly: true,
                 path: '/user/refresh-token',
-                sameSite: 'None', // Ensure the cookie is sent only to your domain
+                // sameSite: 'None', // Ensure the cookie is sent only to your domain
                 secure: process.env.NODE_ENV === 'production' // Ensure cookie is sent only over HTTPS in production
             });
 
@@ -57,7 +58,7 @@ const userControl = {
             res.cookie('refreshToken', refreshToken, {
                 httpOnly: true,
                 path: '/user/refresh-token',
-                sameSite: 'None', // Ensure the cookie is sent only to your domain
+                // sameSite: 'None', // Ensure the cookie is sent only to your domain
                 secure: process.env.NODE_ENV === 'production' // Ensure cookie is sent only over HTTPS in production
             });
 
@@ -167,7 +168,44 @@ const userControl = {
         } catch (error) {
             return res.status(500).json({ msg: error.message });
         }
-    }
+    },
+    createCheckOutSession : async (req, res) => {
+        try {
+            const { id } = req.user; // Get the user's ID from the authenticated request
+    
+            const session = await stripe.checkout.sessions.create({
+                payment_method_types: ['card'],
+                line_items: [{
+                    price: 'price_1PmaPm01k1pfJcVrv0n1DDML', // Replace with your price ID from Stripe
+                    quantity: 1,
+                }],
+                mode: 'payment', // Use 'payment' for one-time payments
+                success_url: `${process.env.CLIENT_URL}/success?session_id={CHECKOUT_SESSION_ID}`, // Pass the session ID to the success URL
+                cancel_url: `${process.env.CLIENT_URL}/cancel`,
+                metadata: { userId: id } // Pass the user's ID in the metadata
+            });
+    
+            res.json({ id: session.id });
+        } catch (error) {
+            res.status(500).json({ msg: error.message });
+        }
+    },
+    handleSuccess : async (req, res) => {
+        try {
+            const session = await stripe.checkout.sessions.retrieve(req.query.session_id);
+            const userId = session.metadata.userId;
+    
+            if (session.payment_status === 'paid') {
+                await Users.findByIdAndUpdate(userId, { isProUser: true });
+                res.status(200).json({ msg: 'Payment successful, user upgraded to Pro!' });
+            } else {
+                res.status(400).json({ msg: 'Payment not successful.' });
+            }
+        } catch (error) {
+            res.status(500).json({ msg: error.message });
+        }
+    }    
+    
 }
 const createAccessToken = (payload) => {
     return jwt.sign(payload, process.env.ACCESS_TOKEN, { expiresIn: '1d' })

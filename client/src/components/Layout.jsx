@@ -1,5 +1,5 @@
 // Layout.js
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Navbar from './Navbar';
 import Footer from './Footer';
@@ -7,7 +7,14 @@ import Footer from './Footer';
 const Layout = ({ children }) => {
   const location = useLocation();
   const isEmbedRoute = location.pathname.startsWith('/embed/');
-
+  
+  useEffect(() => {
+    if (!isEmbedRoute) {
+      document.body.style.backgroundColor = '#151719';
+    } else {
+      document.body.style.backgroundColor = ''; // Reset to default if needed
+    }
+  }, [isEmbedRoute]);
   return (
     <>
       {!isEmbedRoute && <Navbar />}
@@ -15,6 +22,7 @@ const Layout = ({ children }) => {
         {children}
       </div>
       {!isEmbedRoute && <Footer />}
+      {!isEmbedRoute && 'background-color: #151719;'}
     </>
   );
 };

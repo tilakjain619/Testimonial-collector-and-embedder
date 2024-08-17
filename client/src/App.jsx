@@ -19,6 +19,8 @@ import Layout from './components/Layout';
 import MarqueeLayout from './pages/Themes/MarqueeLayout';
 import Error from './components/Error';
 import EditTestimonial from './pages/EditTestimonial';
+import Success from './components/Success';
+import Cancel from './components/Cancel';
 
 const App = () => {
   return (
@@ -50,6 +52,8 @@ const App = () => {
             {/* theme layouts for embeds */}
             <Route path='/embed/grid/:id' element={<GridLayout />} />
             <Route path='/embed/marquee/:id' element={<MarqueeLayout />} />
+            <Route path='/success' element={<Success />} />
+            <Route path='/cancel' element={<Cancel />} />
             
             <Route path='*' element={<Error />} />
           </Routes>

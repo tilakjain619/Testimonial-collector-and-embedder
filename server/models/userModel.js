@@ -14,6 +14,10 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true
+    },
+    isProUser: {
+        type: Boolean,
+        default: false,
     }
 })
 

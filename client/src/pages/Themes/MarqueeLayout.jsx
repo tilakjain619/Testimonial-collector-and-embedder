@@ -58,7 +58,7 @@ const MarqueeLayout = () => {
       ) : (
         <p>Loading...</p>
       )}
-      <div className='w-16 sm:w-20 my-4 mx-auto'>
+      <div className='w-20 rounded-md bg-[#151719] px-3 py-1 sm:w-20 my-4 mx-auto'>
                 <img src={logo} className='w-full' alt="Created with Testiflow" />
             </div>
     </main>

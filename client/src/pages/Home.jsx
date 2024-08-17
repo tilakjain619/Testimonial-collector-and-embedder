@@ -5,18 +5,18 @@ const Home = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const correctPassword = "ok123"; // Replace with your actual password
 
-    useEffect(() => {
-        const password = prompt("Please enter the password to access this website:");
-        if (password === correctPassword) {
-            setIsAuthenticated(true);
-        } else {
-            setIsAuthenticated(false);
-        }
-    }, []);
+    // useEffect(() => {
+    //     const password = prompt("Please enter the password to access this website:");
+    //     if (password === correctPassword) {
+    //         setIsAuthenticated(true);
+    //     } else {
+    //         setIsAuthenticated(false);
+    //     }
+    // }, []);
 
-    if (!isAuthenticated) {
-        return null; // Render nothing if not authenticated
-    }
+    // if (!isAuthenticated) {
+    //     return null; // Render nothing if not authenticated
+    // }
     return (
         <div className='md:max-w-[80%] lg:max-w-[60%] mx-auto'>
             <main className='grid min-h-screen px-2 items-center justify-center text-center'>
