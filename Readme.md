@@ -58,6 +58,8 @@ Create a .env file in client folder and add the following environment variables:
 VITE_BASE_API_URL  = http://localhost:8000
 ```
 
+Running frontend:
+
 ```bash
 npm run dev
 ```
@@ -94,11 +96,26 @@ Open http://localhost:5173 in your browser to see the application.
 
 ## Usage
 - Business, creators and freelancers can sign up and create a profile.
+
 ![signup page](https://res.cloudinary.com/da3wjnlzg/image/upload/f_auto,q_auto/v1/testiflowImages/ezl8mzbpvus8j0sttc7w)
-- Users can create and share testimonial page with their audience and clients.![testimonial pages dashboard](https://res.cloudinary.com/da3wjnlzg/image/upload/f_auto,q_auto/v1/testiflowImages/yhynztprbkgz7abcf1b3)
-- Audience/clients can write a testimonial.![write testimonial page for customers](https://res.cloudinary.com/da3wjnlzg/image/upload/f_auto,q_auto/v1/testiflowImages/jniyakdf9ozdjkfjadhi)
-- Users can track Average Rating, ratings over time, daily submissions, and total testimonials received via dashboard.![user dashboard](https://res.cloudinary.com/da3wjnlzg/image/upload/f_auto,q_auto/v1/testiflowImages/ptinldxzd51uxswqaix1)
-- Users can navigate to a specific testimonial page to view all the testimonials they've received. They can also select an embed theme (Grid/Marquee), copy the generated code, and easily integrate it into their website.![specific testimonial's page](https://res.cloudinary.com/da3wjnlzg/image/upload/f_auto,q_auto/v1/testiflowImages/ahudavjgfq4gzdribnwz)![embed options](https://res.cloudinary.com/da3wjnlzg/image/upload/f_auto,q_auto/v1/testiflowImages/vztrprpnldl7zi525u3g)
+
+- Users can create and share testimonial page with their audience and clients.
+
+![testimonial pages dashboard](https://res.cloudinary.com/da3wjnlzg/image/upload/f_auto,q_auto/v1/testiflowImages/yhynztprbkgz7abcf1b3)
+
+- Audience/clients can write a testimonial.
+
+![write testimonial page for customers](https://res.cloudinary.com/da3wjnlzg/image/upload/f_auto,q_auto/v1/testiflowImages/jniyakdf9ozdjkfjadhi)
+
+- Users can track Average Rating, ratings over time, daily submissions, and total testimonials received via dashboard.
+
+![user dashboard](https://res.cloudinary.com/da3wjnlzg/image/upload/f_auto,q_auto/v1/testiflowImages/ptinldxzd51uxswqaix1)
+
+- Users can navigate to a specific testimonial page to view all the testimonials they've received. They can also select an embed theme (Grid/Marquee), copy the generated code, and easily integrate it into their website.
+
+![specific testimonial's page](https://res.cloudinary.com/da3wjnlzg/image/upload/f_auto,q_auto/v1/testiflowImages/ahudavjgfq4gzdribnwz)
+
+![embed options](https://res.cloudinary.com/da3wjnlzg/image/upload/f_auto,q_auto/v1/testiflowImages/vztrprpnldl7zi525u3g)
 
 ## Folder Structure
 ```bash
@@ -107,12 +124,12 @@ Open http://localhost:5173 in your browser to see the application.
 │   ├── dist    	  	# Build version for demo
 │   ├── public        	# Public assets
 │   ├── src        	  	# Main code
-│	  │	  ├── api   		# API functions
-│	  │   ├── assets    	# Frontend assets
-│	  │   ├── components  # Components
-│	  │   ├── lib       	# Pre-defined functions
-│	  │   ├── pages       # Frontend route pages
-│	  │   ├── utils       # Utility function
+│	│	├── api   		# API functions
+│	│   ├── assets    	# Frontend assets
+│	│   ├── components  # Components
+│	│   ├── lib       	# Pre-defined functions
+│	│   ├── pages       # Frontend route pages
+│	│   ├── utils       # Utility function
 │   ├── .env        	# Enviroment variables for frontend
 ├── server
 │   ├── controllers   	# Control functions
