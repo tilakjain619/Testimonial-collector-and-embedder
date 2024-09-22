@@ -124,12 +124,12 @@ Open http://localhost:5173 in your browser to see the application.
 │   ├── dist    	  	# Build version for demo
 │   ├── public        	# Public assets
 │   ├── src        	  	# Main code
-│	│	├── api   		# API functions
-│	│   ├── assets    	# Frontend assets
-│	│   ├── components  # Components
-│	│   ├── lib       	# Pre-defined functions
-│	│   ├── pages       # Frontend route pages
-│	│   ├── utils       # Utility function
+│	  │	├── api   		# API functions
+│	  │   ├── assets    	# Frontend assets
+│	  │   ├── components  # Components
+│	  │   ├── lib       	# Pre-defined functions
+│	  │   ├── pages       # Frontend route pages
+│	  │   ├── utils       # Utility function
 │   ├── .env        	# Enviroment variables for frontend
 ├── server
 │   ├── controllers   	# Control functions
