@@ -5,12 +5,13 @@ import AverageRatingChart from '../components/AverageRatingChart';
 import RatingOverTimeChart from '../components/RatingOverTimeChart';
 import DailySubmissionsChart from '../components/DailySubmissionsChart';
 import { MagicCard } from "@/components/magicui/magic-card";
+import Loader from '../components/Loader';
 
 const Dashboard = () => {
   const state = useContext(GlobalState);
   const { userInfo, isLogged } = state.userAPI;
   const [showProfileInfo, setShowProfileInfo] = useState(false);
-
+  const [loading, setLoading] = useState(true); // Loader state
   const [token] = state.token;
   const { userTestimonialPages, fetchUserTestimonials } = state.testimonialAPI;
 
@@ -25,7 +26,7 @@ const Dashboard = () => {
 
   useEffect(() => {
     checkUser();
-    fetchUserTestimonials(token);
+    fetchUserTestimonials(token).finally(() => setLoading(false));
   }, []);
 
   // Calculating the total testimonials and average rating
@@ -91,7 +92,11 @@ const Dashboard = () => {
         </svg>
       </div>
       <h2 className='font-semibold text-2xl'>Stats ✌️</h2>
-      <MagicCard className={`fixed px-3 py-2 grid items-center justify-center shadow-lg shadow-zinc-900 w-52 md:w-60 z-10 top-20 transition-all duration-300 rounded-lg h-52 bg-[#202325] md:bg-transparent border-2 border-zinc-800 ${showProfileInfo ? 'right-0' : '-right-52'} md:right-2`}>
+      {
+        loading ? <Loader/>
+        :
+        <>
+        <MagicCard className={`fixed px-3 py-2 grid items-center justify-center shadow-lg shadow-zinc-900 w-52 md:w-60 z-10 top-20 transition-all duration-300 rounded-lg h-52 bg-[#202325] md:bg-transparent border-2 border-zinc-800 ${showProfileInfo ? 'right-0' : '-right-52'} md:right-2`}>
         {/* User Overview */}
         {userInfo && (
           <div className="w-full text-center gap-2 grid items-center justify-center">
@@ -127,19 +132,19 @@ const Dashboard = () => {
           <h3>Daily Submissions</h3>
           <DailySubmissionsChart data={dailySubmissionsData} />
         </div>
-        <div className=' mx-auto w-full flex flex-col gap-3 bg-zinc-800 px-4 py-3 rounded-md'>
+        <div className=' mx-auto w-full flex flex-col gap-3 bg-zinc-800 px-4 py-4 rounded-md'>
           {/* Quick Actions */}
           <div className="flex gap-2">
-            <Link  to="/create" className="bg-zinc-700 px-3 rounded-md py-2 hover:bg-zinc-600 h-fit">Add New Testimonial</Link>
+            <Link  to="/create" className="bg-zinc-700 px-3 rounded-md py-2 hover:bg-zinc-600 h-fit">Create new page</Link>
             <Link  to="/testimonials" className="bg-zinc-700 px-3 rounded-md py-2 hover:bg-zinc-600 h-fit">Manage Testimonials</Link>
           </div>
 
           {/* Recent Testimonials */}
           <div className='flex flex-col gap-3'>
-            <h3>Recently created pages</h3>
+            <h3>Recently pages</h3>
             {userTestimonialPages.slice(0, 5).map(testimonial => (
               <div key={testimonial._id}>
-                <Link to={`/testimonials/${testimonial._id}`} className='line-clamp-2 px-3 py-1 rounded-md text-gray-300 bg-zinc-900'>{testimonial.description}</Link>
+                <Link to={`/testimonials/${testimonial._id}`} className='line-clamp-2 text-sm px-3 py-1 rounded-md text-gray-300 bg-zinc-700'>{testimonial.description}</Link>
               </div>
             ))}
             <p>Total Pages: {userTestimonialPages.length}</p>
@@ -150,6 +155,8 @@ const Dashboard = () => {
       <div className='my-2 text-lg py-1'>
         <h2 className='text-gray-400'>Start creating testimonial pages to see stats</h2>
       </div>
+      }
+      </>
       }
     </main>
   );

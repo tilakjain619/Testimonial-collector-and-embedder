@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { cn } from "@/lib/utils";
 import Marquee from "@/components/magicui/marquee";
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import StarRating from '@/components/StarRating';
 import logo from '../../assets/logo.svg';
 import { GlobalState } from '../../GlobalState';
@@ -58,9 +58,11 @@ const MarqueeLayout = () => {
       ) : (
         <p>Loading...</p>
       )}
-      <div className='w-20 rounded-md bg-[#151719] px-3 py-1 sm:w-20 my-4 mx-auto'>
+      <Link target='_blank' to={`https://testiflow.netlify.app`}>
+            <div className='w-20 rounded-md bg-[#151719] px-3 py-1 sm:w-20 my-4 mx-auto'>
                 <img src={logo} className='w-full' alt="Created with Testiflow" />
             </div>
+            </Link>
     </main>
   );
 };

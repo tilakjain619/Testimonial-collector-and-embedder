@@ -39,7 +39,7 @@ const SignUp = () => {
         <main className='px-4 py-2 md:my-10 grid items-center md:max-w-[40%] lg:max-w-[30%] mx-auto'>
             <div className='text-center my-4'>
                 <h2 className='text-2xl md:text-3xl font-semibold'>Sign up for free 😘</h2>
-                <p className='text-gray-300 text-sm mt-3'>Get unlimited credits for free<br />(Limited Time Offer)</p>
+                <p className='text-gray-300 text-sm mt-3'>Get 3 credits for free<br />(Limited Time Offer)</p>
             </div>
             <form className='grid bg-zinc-800 rounded-md px-4 md:px-6 py-4' onSubmit={handleSignup}>
                 <label className='mt-3 text-gray-300 text-sm' htmlFor="name">Name</label>

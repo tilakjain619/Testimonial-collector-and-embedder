@@ -5,18 +5,18 @@ const Home = () => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const correctPassword = "ok123"; // Replace with your actual password
 
-    useEffect(() => {
-        const password = prompt("Please enter the password to access this website:");
-        if (password === correctPassword) {
-            setIsAuthenticated(true);
-        } else {
-            setIsAuthenticated(false);
-        }
-    }, []);
+    // useEffect(() => {
+    //     const password = prompt("Please enter the password to access this website:");
+    //     if (password === correctPassword) {
+    //         setIsAuthenticated(true);
+    //     } else {
+    //         setIsAuthenticated(false);
+    //     }
+    // }, []);
 
-    if (!isAuthenticated) {
-        return null; // Render nothing if not authenticated
-    }
+    // if (!isAuthenticated) {
+    //     return null; // Render nothing if not authenticated
+    // }
     return (
         <div className='md:max-w-[80%] lg:max-w-[60%] mx-auto'>
             <main className='grid min-h-screen px-2 items-center justify-center text-center'>
@@ -29,7 +29,7 @@ const Home = () => {
                     </div>
                 </div>
                 <div className='mt-10 text-pretty'>
-                    <img className='rounded-3xl lg:w-3/4 mx-auto' src="https://cdn.dribbble.com/userupload/7390122/file/original-f0a51857256dd5802cfc7a47a6f070a2.png?resize=1024x768" alt="some sample dashboard" />
+                    <img className='rounded-xl lg:w-3/4 mx-auto' src="https://res.cloudinary.com/da3wjnlzg/image/upload/f_auto,q_auto/v1/testiflowImages/ptinldxzd51uxswqaix1" alt="some sample dashboard" />
                     <h2 className='text-3xl mt-6 md:mt-10 font-bold md:text-5xl'>A dashboard to manage all testimonials</h2>
                     <p className='text-gray-300 mt-4'>You will have a simple & clean dashboard to manage all testimonials in one place. It's like your email inbox, but it's designed for your social proof!</p>
                 </div>

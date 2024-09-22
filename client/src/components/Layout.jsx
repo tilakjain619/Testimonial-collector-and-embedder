@@ -22,7 +22,6 @@ const Layout = ({ children }) => {
         {children}
       </div>
       {!isEmbedRoute && <Footer />}
-      {!isEmbedRoute && 'background-color: #151719;'}
     </>
   );
 };

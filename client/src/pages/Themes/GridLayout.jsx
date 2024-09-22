@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import { GlobalState } from '../../GlobalState';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import StarRating from '../../components/StarRating';
 import logo from '../../assets/logo.svg'
 
@@ -49,9 +49,11 @@ const GridLayout = () => {
                         </div>
                     ))}
             </div>
+            <Link target='_blank' to={`https://testiflow.netlify.app`}>
             <div className='w-20 rounded-md bg-[#151719] px-3 py-1 sm:w-20 my-4 mx-auto'>
                 <img src={logo} className='w-full' alt="Created with Testiflow" />
             </div>
+            </Link>
         </main>
     )
 }

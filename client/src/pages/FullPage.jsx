@@ -58,6 +58,29 @@ const FullPage = () => {
         }
         setShowOptions(false);
     }
+    async function copyTextToClipboard(text) {
+        if ('clipboard' in navigator) {
+          return await navigator.clipboard.writeText(text);
+        } else {
+          return document.execCommand('copy', true, text);
+        }
+      }
+    const handlePageShare = async (pageId) =>{
+        if (navigator.share) {
+            try {
+              await navigator.share({
+                title: `Write me a testimonial`,
+                text: 'Share your experiences, feedback and suggestions',
+                url: `${window.location.origin}/page/${pageId}`,
+              });
+            } catch (error) {
+              console.error('Error sharing content:', error);
+            }
+          } else {
+            copyTextToClipboard(`${window.location.origin}/page/${pageId}`);
+            toast.success("Link copied to clipboard")
+          }
+    }
 
     const embedCode = `<iframe id="testimonialIframe" src="https://testiflow.netlify.app/embed/${embedType}/${userTestimonial._id}"></iframe>
 <script src="https://res.cloudinary.com/da3wjnlzg/raw/upload/v1/testimonialJS/ihlzrspaxe2tvbm6qbza.js"></script>`
@@ -158,6 +181,7 @@ const FullPage = () => {
                     <div className='grid gap-1'>
                         <h2 className='px-4 pt-2.5 text-slate-400 font-semibold uppercase'>Links</h2>
                         <Link onClick={handleCloseOptions} to={`/page/${userTestimonial._id}`} className=' w-full hover:bg-zinc-700 px-4 py-2.5 rounded-md'>Public Landing Page</Link>
+                        <Link onClick={() => handlePageShare(userTestimonial._id)} className=' w-full hover:bg-zinc-700 px-4 py-2.5 rounded-md'>Share</Link>
                     </div>
                     <div className='grid gap-1'>
                         <h2 className='px-4 pt-2.5 text-slate-400 font-semibold uppercase'>Manage</h2>
